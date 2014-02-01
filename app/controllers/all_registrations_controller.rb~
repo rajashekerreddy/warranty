@@ -1,0 +1,99 @@
+class AllRegistrationsController < ApplicationController
+  # GET /all_registrations
+  # GET /all_registrations.json
+  def index
+    @all_registrations = AllRegistration.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @all_registrations }
+    end
+  end
+
+  # GET /all_registrations/1
+  # GET /all_registrations/1.json
+  def show
+    @all_registration = AllRegistration.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @all_registration }
+    end
+  end
+
+  # GET /all_registrations/new
+  # GET /all_registrations/new.json
+  def new
+    @all_registration = AllRegistration.new
+@all_registration.reg_no=number_retrive("REG")
+@group = Group.all
+@year = Year.all
+@category = Category.where(:category != '')
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @all_registration }
+    end
+  end
+
+  # GET /all_registrations/1/edit
+  def edit
+    @all_registration = AllRegistration.find(params[:id])
+  end
+
+  # POST /all_registrations
+  # POST /all_registrations.json
+  def create
+    @all_registration = AllRegistration.new(params[:all_registration])
+puts @all_register,"fffffffffff"
+    respond_to do |format|
+      if @all_registration.save
+        number_save("REG",@all_registration.reg_no.split("REG")[1])
+        format.html { redirect_to @all_registration, notice: 'All registration was successfully created.' }
+        format.json { render json: @all_registration, status: :created, location: @all_registration }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @all_registration.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /all_registrations/1
+  # PUT /all_registrations/1.json
+  def update
+    @all_registration = AllRegistration.find(params[:id])
+
+    respond_to do |format|
+      if @all_registration.update_attributes(params[:all_registration])
+        format.html { redirect_to @all_registration, notice: 'All registration was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @all_registration.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /all_registrations/1
+  # DELETE /all_registrations/1.json
+  def destroy
+    @all_registration = AllRegistration.find(params[:id])
+    @all_registration.destroy
+
+    respond_to do |format|
+      format.html { redirect_to all_registrations_url }
+      format.json { head :no_content }
+    end
+  end
+  def inlines123
+  p "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    cat = Category.find(params[:category_id])
+    groups = cat.groups
+    puts groups[0].id,"iiiiiii"
+    render :inline =>
+    " <%= f.select :category, options_from_collection_for_select(@category, 'id', 'name'),
+       :onchange => remote_function(:url => {:controller => 'all_registrations', 
+                                             :action => 'inlines',
+                                             :filter =>'ategory'}, 
+                                    :with=>\"'group_id=' + $('#group').val()\") %> "
+  end
+end

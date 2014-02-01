@@ -1,0 +1,72 @@
+<%- model_class = AllRegistration -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:roll_no) %></th>
+      <th><%= model_class.human_attribute_name(:reg_no) %></th>
+      <th><%= model_class.human_attribute_name(:first_name) %></th>
+      <th><%= model_class.human_attribute_name(:last_name) %></th>
+      <th><%= model_class.human_attribute_name(:father_name) %></th>
+      <th><%= model_class.human_attribute_name(:ph_no) %></th>
+      <th><%= model_class.human_attribute_name(:gender) %></th>
+      <th><%= model_class.human_attribute_name(:dob) %></th>
+      <th><%= model_class.human_attribute_name(:age) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%= model_class.human_attribute_name(:city) %></th>
+      <th><%= model_class.human_attribute_name(:state) %></th>
+      <th><%= model_class.human_attribute_name(:country) %></th>
+      <th><%= model_class.human_attribute_name(:pincode) %></th>
+      <th><%= model_class.human_attribute_name(:hall_ticket) %></th>
+      <th><%= model_class.human_attribute_name(:category) %></th>
+      <th><%= model_class.human_attribute_name(:group) %></th>
+      <th><%= model_class.human_attribute_name(:year) %></th>
+      <th><%= model_class.human_attribute_name(:reg_fee) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @all_registrations.each do |all_registration| %>
+      <tr>
+        <td><%= link_to all_registration.id, all_registration_path(all_registration) %></td>
+        <td><%= all_registration.roll_no %></td>
+        <td><%= all_registration.reg_no %></td>
+        <td><%= all_registration.first_name %></td>
+        <td><%= all_registration.last_name %></td>
+        <td><%= all_registration.father_name %></td>
+        <td><%= all_registration.ph_no %></td>
+        <td><%= all_registration.gender %></td>
+        <td><%= all_registration.dob %></td>
+        <td><%= all_registration.age %></td>
+        <td><%= all_registration.address %></td>
+        <td><%= all_registration.city %></td>
+        <td><%= all_registration.state %></td>
+        <td><%= all_registration.country %></td>
+        <td><%= all_registration.pincode %></td>
+        <td><%= all_registration.hall_ticket %></td>
+        <td><%= all_registration.category %></td>
+        <td><%= all_registration.group %></td>
+        <td><%= all_registration.year %></td>
+        <td><%= all_registration.reg_fee %></td>
+        <td><%=l all_registration.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_all_registration_path(all_registration), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      all_registration_path(all_registration),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_all_registration_path,
+            :class => 'btn btn-primary' %>

@@ -1,0 +1,35 @@
+<%= javascript_include_tag :default %>
+<%= simple_form_for @all_registration, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :roll_no %>
+  <%= f.input :reg_no %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :father_name %>
+  <%= f.input :ph_no %>
+  <%= f.input :gender %>
+  <%= f.input :dob %>
+  <%= f.input :age %>
+  <%#= f.input :address %>
+  <%= f.tinymce :address %>
+  <%= f.input :city %>
+  <div class="control-group string optional all_registration_city">
+    <%= f.select :state, ["A.P"] %>
+  </div>
+  <%= f.select :country,["India"] %>
+  <%= f.input :pincode %>
+  <%= f.input :hall_ticket %>
+   <%= f.select :category, options_from_collection_for_select(@category, 'id', 'name'),
+       :onchange => remote_function(:url => {:controller => "all_registrations", 
+                                             :action => "inlines123",
+                                             :filter =>""}, 
+                                    :with=>"'category_id=' + $('#category').val()") %>
+  
+  <%= f.input :group %>
+  <%= f.input :year %>
+  <%= f.input :reg_fee %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                all_registrations_path, :class => 'btn' %>
+  </div>
+<% end %>

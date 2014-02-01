@@ -1,0 +1,12 @@
+@mixin float_right  
+  float: right
+@mixin margin_top($pixels)
+  margin-top: $pixels
+@mixin margin-right($pixels)
+  margin-right: $pixels
+.right_side
+  @include float_right
+  @include margin_top(-47px)
+  @include margin_right(256px)
+.cal_right
+  @include margin_right(-15px)

@@ -1,0 +1,38 @@
+<%= simple_form_for @college_fee, :html => { :class => 'form-horizontal' } do |f| %>
+  <% date=format_date(:date_time) %>
+  <label class="string optional control-label" for="college_fee_bill_date_time">Reg Date</label>
+  <div class="control-group string optional college_fee_bill_date_time">
+    <div class="controls">
+      <%= f.text_field :bill_date_time, :value => date %>
+    </div>
+  </div>
+  <div class="right_side">
+    <%= f.input :hall_no %>
+  </div>
+  
+  <div id="student"></div>
+  <label class="string optional control-label" for="college_fee_last_paid_amt">Last Paid Amount</label>
+  <div class="control-group string optional college_fee_last_paid_amt">
+    <div class="controls">
+      <%= f.text_field :last_paid_amt %>
+    </div>
+  </div>
+
+  <div class="right_side">
+  <label class="string optional control-label" for="college_fee_this_time_pay">Paid Amount</label>
+    <%= f.text_field :this_time_pay %>
+  </div>
+
+  <label class="string optional control-label" for="college_fee_till_now_paid">Till Now Paid</label>
+  <div class="control-group string optional college_fee_till_now_paid">
+    <div class="controls">
+      <%= f.text_field :till_now_paid %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                college_fees_path, :class => 'btn' %>
+  </div>
+<% end %>

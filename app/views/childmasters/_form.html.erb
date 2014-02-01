@@ -1,0 +1,16 @@
+<%= simple_form_for(@childmaster) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :profilemaster_id %>
+    <%= f.input :new %>
+    <%= f.input :edit %>
+    <%= f.input :view %>
+    <%= f.input :remove %>
+    <%= f.input :forms %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

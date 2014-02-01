@@ -1,0 +1,2 @@
+module PapclipsHelper
+end

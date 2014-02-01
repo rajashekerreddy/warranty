@@ -1,0 +1,97 @@
+<%# unless @college_master.blank? %>
+<%= simple_form_for @attendence_child,:url => {:controller=>:attendences, :action=>:create_attendence}, :html => { :class => 'form-horizontal' } do |f| %>
+  <label class="string optional control-label" for="attendence_year">Year</label>
+    <div class="controls">
+  <div class="control-group string optional attendence_year">
+      <%= f.select :year, options_from_collection_for_select(@year, 'id', 'year'), {:prompt=>true} %>
+  </div>
+</div>
+ <div class="right_side">
+    <label class="string optional control-label" for="attedence_group">Group</label>
+    <div class="controls">
+        <div class="control-group string optional attedence_group">
+           <%= f.select :group, "",{:prompt=>true} %>
+        </div>
+    </div>
+</div>
+
+<label class="string optional control-label" for="attedence_subject">Subject</label>
+    <div class="controls">
+        <div class="control-subject string optional attedence_subject">
+           <%= f.select :subject, "",{:prompt=>true} %>
+        </div>
+    </div>
+
+<div class="right_side">
+ <label class="string optional control-label" for="attedence_att_date">Att-Date</label>
+      <div class="controls">
+        <div class="control-group string optional attedence_att_date">
+           <%= f.text_field :att_date, :readOnly=>true, :value=>Date.today %><%= calender('attendence_att_date') %>
+        </div>
+    </div>
+    </div>
+    <div id="s_table"></div>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary', :onClick=>"check_box()" %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                attendences_path, :class => 'btn' %>
+  </div>
+<% end %>
+<%# else %>
+<!-- <h2 align="center"><%#= flash[:notice] = t(:please_fill_college_master) %></h2> -->
+<%# end %>
+<script type="text/javascript">          
+// jQuery(".forchange").on('click', function(){
+//   if(jQuery(this).val() == "1")
+//   jQuery(this).val("0")
+//   else if(jQuery(this).val() == "0")
+//   jQuery(this).val("1")
+// })
+
+var CC = {
+    get_groups_years: function(type,obj,target){
+      $('#'+target).empty();
+      $.ajax({
+            url: '<%= url_for(:controller=>:all_registrations, :action=>:get_groups_years) %>',
+            type: "GET",
+            data: { "category": jQuery(obj).val(),'type':type},
+            dataType: "json",
+            success: function (data) {
+              $('#'+target).append($("<option>Please Select</option>"))
+            $.each(data, function(i, item) {
+                $('#'+target).append($("<option></option>").attr("value",i).text(item));
+            });
+            }
+      });
+    }
+}
+// $('#attendence_group').on('change',function(){
+//    attendence()
+// })
+
+// $('#attendence_year').on('change',function(){
+//    attendence()
+// })
+
+$('#attendence_child_subject').on('change',function(){
+   attendence()
+})
+
+function attendence(){
+  $.ajax({
+    url: '<%= url_for(:controller=>:attendences, :action=>:get_attendence_sheet) %>',
+    type: "GET",
+    data: { "year": $('#attendence_child_year').val(), "group": $('#attendence_child_year').val(),"form_name":"attendance", "subject": $('#attendence_child_subject').val()},
+    dataType: "html",
+    success: function (data) {
+      document.getElementById("s_table").innerHTML=data
+    }
+  });
+}
+function check_box(){
+  jQuery.each(jQuery("input#presence_:checked"), function() {
+    jQuery(this).val("yes_"+jQuery(this).attr("p_id"))
+  })
+
+}
+</script>

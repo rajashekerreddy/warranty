@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>N type:</b>
+  <%= @number.n_type %>
+</p>
+
+<p>
+  <b>Start value:</b>
+  <%= @number.start_value %>
+</p>
+
+
+<%= link_to 'Edit', edit_number_path(@number) %> |
+<%= link_to 'Back', numbers_path %>

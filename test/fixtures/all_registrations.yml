@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  roll_no: MyString
+  reg_no: MyString
+  first_name: MyString
+  last_name: MyString
+  father_name: MyString
+  ph_no: MyString
+  gender: MyString
+  dob: 2013-04-27
+  age: 1
+  address: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  pincode: MyString
+  hall_ticket: MyString
+  category: MyString
+  group: MyString
+  year: MyString
+  reg_fee: 1.5
+
+two:
+  roll_no: MyString
+  reg_no: MyString
+  first_name: MyString
+  last_name: MyString
+  father_name: MyString
+  ph_no: MyString
+  gender: MyString
+  dob: 2013-04-27
+  age: 1
+  address: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  pincode: MyString
+  hall_ticket: MyString
+  category: MyString
+  group: MyString
+  year: MyString
+  reg_fee: 1.5

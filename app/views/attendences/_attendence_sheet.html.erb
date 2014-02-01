@@ -1,0 +1,18 @@
+<table width="100%">
+  <tr>
+    <th>S.No</th>    
+    <th>St.Name(Roll/Hall-Ticket No)</th>
+    <th>Presence/Absence</th>
+  </tr>
+  <% @i=0 %>
+  <%#= fields_for :attendence_children, @attendence_children do |ac| %>
+  <% @students.each do |student| %>
+  <% re = AllRegistration.find(student.all_registration_id) %>
+    <tr>
+      <td><%= @i+=1 %></td>
+      <td><%= hidden_field_tag('student_id[]','', :id=>"s_#{re.id}", :value=>re.id) %><%= re.first_name %>---<%=re.hall_ticket ||= re.roll_no %></td>
+      <td><%= check_box_tag('presence[]','','',:p_id=>re.id) %></td>
+   </tr>
+  <%end%>
+  <%#end%>
+</table>

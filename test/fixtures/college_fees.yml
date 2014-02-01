@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  hall_no: MyString
+  bill_date_time: 2013-11-17 10:09:59
+  last_paid_amt: 1.5
+  this_time_pay: 1
+  till_now_paid: 1
+
+two:
+  hall_no: MyString
+  bill_date_time: 2013-11-17 10:09:59
+  last_paid_amt: 1.5
+  this_time_pay: 1
+  till_now_paid: 1

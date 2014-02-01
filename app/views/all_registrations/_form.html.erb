@@ -1,0 +1,160 @@
+
+<%= simple_form_for @all_registration, :html => { :class => 'form-horizontal' },:enctype=>"multipart/form-data",:method=>"post" do |f| %>
+
+<table><tr><td><%=  image_tag("useraccountsicon.png", :alt=>"your image", :border=>"1", :width=>"150px", :height=>"150px;", :id=>"blah") %></td></tr><tr><td>
+
+  <%= file_field :files, :image_table,  :class => 'input-file', :onchange => "return readURL(this);", :id => "upload_image" %>
+
+<!-- <input type="file" name="image_table[files]" id="file" multiple=true  accept="image/*">  -->
+
+</td></tr></table>
+<label class="string optional control-label" for="all_registration_reg_date">Reg Date</label>
+  <div class="control-group string optional all_registration_reg_date">
+     <div class="controls">
+  <%= f.text_field :reg_date, :readOnly=>true, :value=>Date.today %><%= calender('all_registration_reg_date') %>
+</div>
+</div>
+ <%= f.input :roll_no %>
+<div class="right_side">
+  <%= f.input :reg_no %>
+</div>
+
+  <%= f.input :first_name %>
+  <div class="right_side">
+  <%= f.input :last_name %>
+</div>
+  <%= f.input :father_name %>
+  <div class="right_side">
+  <%= f.input :ph_no %>
+</div>
+     <label class="string optional control-label" for="all_registration_gender">Gender</label>
+    <div class="controls">
+  <div class="control-group string optional all_registration_gender">
+    <%= f.select :gender, [['Male', 'M'],['Female','F']], {:prompt=>true}  %>
+  </div>
+</div>
+
+<div class="right_side">
+  <label class="string optional control-label" for="all_registration_dob">DOB</label>
+  <div class="controls">
+<%= f.text_field 'dob', :readOnly=>true%><%= calender('all_registration_dob') %>
+</div>
+</div>
+  <%= f.input :age %>
+  <div class="right_side">
+  <%= f.input :address %>
+</div>
+  <%= f.input :city %>
+  <div class="right_side">
+    <label class="string optional control-label" for="all_registration_state">State</label>
+    <div class="controls">
+  <div class="control-group string optional all_registration_state">
+    <%= f.select :state, ["A.P"] %>
+  </div>
+</div>
+</div>
+<label class="string optional control-label" for="all_registration_state">Country</label>
+    <div class="controls">
+  <div class="control-group string optional all_registration_city">
+  <%= f.select :country,["India"] %>
+</div>
+</div>
+<div class="right_side">
+  <%= f.input :pincode %>
+</div>
+ <%#= f.input :hall_ticket %>
+  <!-- <div class="right_side">
+   <label class="string optional control-label" for="all_registration_category">Category</label>
+    <div class="controls">
+  <div class="control-group string optional all_registration_category">
+      <%#= f.select :category, options_from_collection_for_select(@category, 'id', 'name'), {:prompt=>true} %>
+  </div>
+</div>
+</div> -->
+
+<%= hidden_field_tag :category,'',:value=>@category %>
+<% cls ="" %>
+   <%# f.fields_for :move_class_children, @move_class_children do |m| %>
+   <%= fields_for :move_class_children do |m| %>
+<label class="string optional control-label" for="all_registration_year">Year</label>
+    <div class="controls">
+  <div class="control-group string optional all_registration_year">
+    <%= m.select :year, options_from_collection_for_select(@years,'id','year'),{:prompt=>true},{:id=>"all_registration_year"}  %>
+   </div>
+ </div>
+ <div class="right_side">
+  <label class="string optional control-label" for="all_registration_group">Group</label>
+  <div class="controls">
+  <div class="control-group string optional all_registration_group">
+    <%= m.select :group,'',{:prompt=>true},{:id=>"all_registration_group"}  %>
+  </div>
+</div>
+</div>
+
+<% if(!@semesters.blank?) %>
+<label class="string optional control-label" for="all_registration_semester">Semester</label>
+    <div class="controls">
+  <div class="control-group string optional all_registration_semester">
+    <%= m.select :semester,'', options_from_collection_for_select(@semester, 'id', 'semester'), {:prompt=>true} %>
+  </div>
+</div>
+<% cls = "right_side" %>
+<% end %>
+<% end %>
+
+<div class="<%= cls %>">
+  <%= f.input :reg_fee, :input_html => {:class=>"validate[required,custom[integer]]"} %>
+</div>
+
+
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                all_registrations_path, :class => 'btn' %>
+  </div>
+<% end %>
+<script type="text/javascript">
+
+
+
+
+var CC = {
+    get_groups_years: function(type,obj,target){
+      $('#'+target).empty();
+      $.ajax({
+            url: '<%= url_for(:controller=>:all_registrations, :action=>:get_groups_years) %>',
+            type: "GET",
+            data: { "category": jQuery(obj).val(),'type':type},
+            dataType: "json",
+            success: function (data) {
+              $('#'+target).append($("<option>Please Select</option>"))
+            $.each(data, function(i, item) {
+                $('#'+target).append($("<option></option>").attr("value",i).text(item));
+            });
+            }
+      });
+    }
+}
+</script>
+<script type="text/javascript">
+  function readURL(input){
+  if(!/(\.bmp|\.gif|\.jpg|\.jpeg|\.png)$/i.test(input.value)) {
+    alert("Invalid image file type.");
+    document.getElementById('upload_image').value="";
+    input.focus();
+    return false;
+    }
+       if (input.files && input.files[0]){
+     
+                var reader = new FileReader();
+      reader.onload = function (e)
+      {
+        $('#blah').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+  
+</script>

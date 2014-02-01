@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  profilemaster_id: 1
+  new: MyString
+  edit: MyString
+  view: MyString
+  remove: MyString
+  forms: MyString
+
+two:
+  profilemaster_id: 1
+  new: MyString
+  edit: MyString
+  view: MyString
+  remove: MyString
+  forms: MyString

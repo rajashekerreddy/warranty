@@ -1,0 +1,116 @@
+class AttendencesController < ApplicationController
+  # GET /attendences
+  # GET /attendences.json
+  def index
+    @attendences = Attendence.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @attendences }
+    end
+  end
+
+  # GET /attendences/1
+  # GET /attendences/1.json
+  def show
+    @attendence = Attendence.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @attendence }
+    end
+  end
+
+  # GET /attendences/new
+  # GET /attendences/new.json
+  def new
+    @attendence = Attendence.new
+    @college_master = CollegeMaster.last
+    @year = Category.find(@college_master.category).years !@college_master.blank?
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @attendence }
+    end
+  end
+
+  # GET /attendences/1/edit
+  def edit
+    @attendence = Attendence.find(params[:id])
+  end
+
+  # POST /attendences
+  # POST /attendences.json
+  def create
+    @attendence = Attendence.new(params[:attendence])
+    
+    stArray=params[:student_id]
+    preArray=params[:presence]
+    myHash={}
+    myString=""
+
+    for i in 0...stArray.length
+         myHash.store(:student_id, stArray[i])
+         myHash.store(:presence, preArray[i])
+          myString+=myHash.to_s
+    end
+has1={}
+has1.store(:student_id,myString.gsub!("}{","},{"))
+    respond_to do |format|
+      if @attendence.save
+          @attendence.attendence_children.create(has1)
+        format.html { redirect_to @attendence, notice: 'Attendence was successfully created.' }
+        format.json { render json: @attendence, status: :created, location: @attendence }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @attendence.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /attendences/1
+  # PUT /attendences/1.json
+  def update
+    @attendence = Attendence.find(params[:id])
+
+    respond_to do |format|
+      if @attendence.update_attributes(params[:attendence])
+        format.html { redirect_to @attendence, notice: 'Attendence was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @attendence.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /attendences/1
+  # DELETE /attendences/1.json
+  def destroy
+    @attendence = Attendence.find(params[:id])
+    @attendence.destroy
+
+    respond_to do |format|
+      format.html { redirect_to attendences_url }
+      format.json { head :no_content }
+    end
+  end
+  def get_attendence_sheet
+
+    # attendence_children = AttendenceChild.new
+    @students = AllRegistration.where(:group=>params[:group],:year=>params[:year])
+    render :partial => "attendence_sheet"
+    # , :locals=> { attendence: attendence_children}
+
+    # attendence = Attendence.new
+    # a_child = attendence.attendence_children.build
+    # @students = AllRegistration.where(:group=>params[:group],:year=>params[:year])
+    # render :partial => "attendence_sheet", :locals=> { a_child: a_child}
+  end
+  def get_attendence_percentage
+    @attendence = AttendenceChild.where(:student_id=>params[:hall_ticket])
+    return if @attendence.blank?
+    @registration = AllRegistration.where(:hall_ticket=>params[:hall_ticket]).last
+    @total_days = Date.today-@registration.reg_date
+    render :partial => :graph
+  end
+end

@@ -1,0 +1,23 @@
+<h1>Listing gtpls</h1>
+
+<table>
+  <tr>
+    <th>Attributes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @gtpls.each do |gtpl| %>
+  <tr>
+    <td><%= gtpl.attributes %></td>
+    <td><%= link_to 'Show', gtpl %></td>
+    <td><%= link_to 'Edit', edit_gtpl_path(gtpl) %></td>
+    <td><%= link_to 'Destroy', gtpl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Gtpl', new_gtpl_path %>

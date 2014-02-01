@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Files:</b>
+  <%= @papclip.files %>
+</p>
+
+<%= image_tag @papclip.files.url(:small) %>
+
+<%= link_to 'Edit', edit_papclip_path(@papclip) %> |
+<%= link_to 'Back', papclips_path %>

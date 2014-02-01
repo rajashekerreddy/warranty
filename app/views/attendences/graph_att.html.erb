@@ -1,0 +1,45 @@
+ <%=javascript_include_tag "/assets/javascripts/high_charts.js" %>
+<!-- <label class="string optional control-label" for="attendence_year">Year</label>
+    <div class="controls">
+    	<div class="control-group string optional attendence_year">
+      <%#= select :year1,'', options_from_collection_for_select(@year, 'id', 'year'), {:prompt=>true},{:id=>"attendence_year"} %>
+  </div>
+</div>
+ <div class="right_side">
+    <label class="string optional control-label" for="attedence_group">Group</label>
+    <div class="controls">
+        <div class="control-group string optional attedence_group">
+           <%#= select :group, "","",{:prompt=>true},{:id=>"attendence_group"} %>
+        </div>
+  </div>
+</div>
+
+
+<label class="string optional control-label" for="attedence_subject">Subject</label>
+    <div class="controls">
+        <div class="control-subject string optional attedence_subject">
+           <%#= select :subject,"", "",{:prompt=>true},{:id=>"attendence_subject"} %>
+        </div>
+    </div> -->
+
+<label class="string optional control-label" for="attedence">H-No/Reg.No</label>
+    <div class="controls">
+        <div class="control-subject string optional attedence">
+           <%= text_field :subject, "",{:id=>"attendence"} %>
+        </div>
+    </div> 
+    <button id='get_attendence'>Go</button>
+    <div id="results"></div>
+<script type="text/javascript">
+jQuery('#get_attendence').on('click',function(){
+  jQuery.ajax({
+    url: '<%= url_for(:controller=>:attendences, :action=>:student_percentage) %>',
+    type: "GET",
+    data: { "h_no": jQuery('#attendence').val()},
+    dataType: "html",
+    success: function (data) {
+      $("#results").html(data)
+    }
+  });
+})
+</script>

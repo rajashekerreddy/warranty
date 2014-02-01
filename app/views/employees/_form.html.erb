@@ -1,0 +1,31 @@
+<%= simple_form_for @employee, :html => { :class => 'form-horizontal' } do |f| %>
+  <label class="string optional control-label" for="employee_reg_date">Reg Date</label>
+  <div class="control-group string optional employee_reg_date">
+    <div class="controls">
+      <%= f.text_field :reg_date, :readOnly=>true, :value=>Date.today %><%= calender('employee_reg_date') %>
+    </div>
+  </div>
+      <%= f.input :emp_id, :input_html=>{:readOnly=>true} %>
+  <div class="right_side">
+      <%= f.input :emp_name %>
+  </div>
+      <%= f.input :adress %>
+  <div class="right_side">
+      <%= f.input :salary_type %>
+  </div>
+      <%= f.input :salary %>
+
+  <div class="right_side">
+      <%= f.input :designation %>
+  </div>
+     <label class="string optional control-label" for="employee_dob">DOB</label>
+  <div class="controls">
+<%= f.text_field 'dob', :readOnly=>true%><%= calender('employee_dob') %>
+</div>
+  
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                employees_path, :class => 'btn' %>
+  </div>
+<% end %>

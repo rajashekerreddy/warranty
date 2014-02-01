@@ -1,0 +1,15 @@
+<table width="100%">
+  <tr>
+    <th>S.No</th>    
+    <th>St.Name(Roll/Hall-Ticket No)</th>
+    <th>Presence/Absence</th>
+  </tr>
+  <% @i=0 %>
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= @i+=1 %></td>
+      <td><%= hidden_field_tag 'student_id[]','', :id=>"s_#{@i}", :value=>student.id %><%= student.first_name %>---<%=student.hall_ticket ||= student.roll_no %></td>
+      <td><%= check_box_tag 'presence[]',1,true, :class=>"forchange" %></td>
+    </tr>
+  <%end%>
+</table>

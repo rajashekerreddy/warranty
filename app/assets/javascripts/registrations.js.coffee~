@@ -1,0 +1,4 @@
+jQuery ->  
+  jQuery("#all_registration_category").change -> CC.get_groups_years "category",@,'all_registration_year'
+  jQuery("#all_registration_year").change -> CC.get_groups_years "year",@,'all_registration_group'
+  jQuery("#attendence_year").change -> CC.get_groups_years "year",@,'attendence_group'

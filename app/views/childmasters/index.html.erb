@@ -1,0 +1,33 @@
+<h1>Listing childmasters</h1>
+
+<table>
+  <tr>
+    <th>Profilemaster</th>
+    <th>New</th>
+    <th>Edit</th>
+    <th>View</th>
+    <th>Remove</th>
+    <th>Forms</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @childmasters.each do |childmaster| %>
+  <tr>
+    <td><%= childmaster.profilemaster_id %></td>
+    <td><%= childmaster.new %></td>
+    <td><%= childmaster.edit %></td>
+    <td><%= childmaster.view %></td>
+    <td><%= childmaster.remove %></td>
+    <td><%= childmaster.forms %></td>
+    <td><%= link_to 'Show', childmaster %></td>
+    <td><%= link_to 'Edit', edit_childmaster_path(childmaster) %></td>
+    <td><%= link_to 'Destroy', childmaster, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Childmaster', new_childmaster_path %>

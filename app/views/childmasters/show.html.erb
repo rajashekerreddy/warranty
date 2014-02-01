@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Profilemaster:</b>
+  <%= @childmaster.profilemaster_id %>
+</p>
+
+<p>
+  <b>New:</b>
+  <%= @childmaster.new %>
+</p>
+
+<p>
+  <b>Edit:</b>
+  <%= @childmaster.edit %>
+</p>
+
+<p>
+  <b>View:</b>
+  <%= @childmaster.view %>
+</p>
+
+<p>
+  <b>Remove:</b>
+  <%= @childmaster.remove %>
+</p>
+
+<p>
+  <b>Forms:</b>
+  <%= @childmaster.forms %>
+</p>
+
+
+<%= link_to 'Edit', edit_childmaster_path(@childmaster) %> |
+<%= link_to 'Back', childmasters_path %>

@@ -1,0 +1,14 @@
+class AllRegistrationChildren < ActiveRecord::Migration
+def change
+    create_table :all_registration_children do |t|
+  t.integer :all_registration_id
+  t.string :status
+  t.string :year
+      t.string :group
+      t.string :semester
+      t.string :batch
+
+      t.timestamps
+    end
+  end
+end

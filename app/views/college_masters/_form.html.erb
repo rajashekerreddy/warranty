@@ -1,0 +1,19 @@
+<%= simple_form_for @college_master, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :college_name %>
+  <%= f.input :college_code %>
+
+  <label class="string optional control-label" for="college_master_categry">Category</label>
+  <div class="controls">
+    <div class="control-group string optional college_master_categry">
+      <%= f.select :category, options_from_collection_for_select(@category, 'id', 'name'), {:prompt=>false} %>
+    </div>
+  </div>
+  <%= f.input :address, :input_html=>{:rows=>5, :cols=>100} %>
+  <%= f.input :ph_no %>
+  <%= f.input :mobile_no %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                college_masters_path, :class => 'btn' %>
+  </div>
+<% end %>

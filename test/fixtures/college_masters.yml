@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  college_name: MyString
+  college_code: MyString
+  category: MyString
+  address: MyText
+  ph_no: MyString
+  mobile_no: MyString
+
+two:
+  college_name: MyString
+  college_code: MyString
+  category: MyString
+  address: MyText
+  ph_no: MyString
+  mobile_no: MyString

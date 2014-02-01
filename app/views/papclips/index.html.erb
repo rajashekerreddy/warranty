@@ -1,0 +1,23 @@
+<h1>Listing papclips</h1>
+
+<table>
+  <tr>
+    <th>Files</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @papclips.each do |papclip| %>
+  <tr>
+    <td><%= papclip.files %></td>
+    <td><%= link_to 'Show', papclip %></td>
+    <td><%= link_to 'Edit', edit_papclip_path(papclip) %></td>
+    <td><%= link_to 'Destroy', papclip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Papclip', new_papclip_path %>
