@@ -19,6 +19,10 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+end
+
 gem 'paperclip', "~> 3.4.1"
 gem 'jquery-rails', "~> 2.2.1"
 gem 'therubyracer', "~> 0.9.10"
@@ -28,6 +32,8 @@ gem 'less-rails', "~> 2.3.3"
 gem 'twitter-bootstrap-rails', "~> 2.2.6" # rails g bootstrap:themed tablename -f
 gem 'rb-readline', '~> 0.4.2'
 gem 'git'
+gem 'i18n'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
