@@ -6,7 +6,7 @@ require File.expand_path('../config/application', __FILE__)
 
 Warranty::Application.load_tasks
 
- require 'rake'
+ #require 'rake'
 # require 'rake/testtask'
 # require 'rake/rdoctask'
 
