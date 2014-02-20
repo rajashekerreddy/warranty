@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131117043958) do
+ActiveRecord::Schema.define(:version => 20140214105443) do
 
   create_table "all_registration_children", :force => true do |t|
     t.integer  "all_registration_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20131117043958) do
     t.date     "reg_date"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "image_file"
   end
 
   create_table "attendence_children", :force => true do |t|
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20131117043958) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "subject"
+    t.date     "att_date"
   end
 
   create_table "categories", :force => true do |t|
@@ -187,6 +189,14 @@ ActiveRecord::Schema.define(:version => 20131117043958) do
     t.string   "size1"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "photos", :force => true do |t|
+    t.text     "content"
+    t.integer  "photable_id"
+    t.string   "photable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "products", :force => true do |t|

@@ -1,5 +1,5 @@
 
-<%= simple_form_for @all_registration, :html => { :class => 'form-horizontal' },:enctype=>"multipart/form-data",:method=>"post" do |f| %>
+<%= simple_form_for @all_registration, :html => { :class => 'form-horizontal', :multipart=>true },:enctype=>"multipart/form-data",:method=>"post" do |f| %>
 
 <table><tr><td><%=  image_tag("useraccountsicon.png", :alt=>"your image", :border=>"1", :width=>"150px", :height=>"150px;", :id=>"blah") %></td></tr><tr><td>
 

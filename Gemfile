@@ -7,6 +7,9 @@ gem 'rails', '3.2.8'
 
 gem 'mysql'
 
+group :production do
+  gem 'pg'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -52,3 +55,4 @@ gem 'i18n'
 gem "prototype-rails", "~> 3.2.1"
 gem 'devise' , '1.4.9'
 gem 'jquery_datepicker', '0.4'
+gem "rails-backbone"

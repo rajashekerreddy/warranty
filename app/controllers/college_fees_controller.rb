@@ -25,7 +25,7 @@ class CollegeFeesController < ApplicationController
   # GET /college_fees/new.json
   def new
     @college_fee = CollegeFee.new
-
+     
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @college_fee }

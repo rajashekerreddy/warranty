@@ -1,5 +1,7 @@
 Warranty::Application.routes.draw do
  
+  # map.resources :all_registrations, :has_many => :image_tables
+
   resources :college_fees
 
   resources :attendences do

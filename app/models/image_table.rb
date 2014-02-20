@@ -1,7 +1,8 @@
 require 'paperclip'
 class ImageTable < ActiveRecord::Base
- belogs_to :all_registration
-  #attr_accessible :files_content_type, :files_file_name, :files_file_size, :files_updated_at, :parent_id, :image_from
+  belongs_to :parent, :polymorphic => true
+  # belongs_to :all_registration
+  attr_accessible :files_content_type, :files_file_name, :files_file_size, :files_updated_at, :parent_id, :image_from
 
   attr_accessible :files
 #  has_attached_file :files, :styles => { :small => "150x150>" },
