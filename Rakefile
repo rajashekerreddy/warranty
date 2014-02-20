@@ -6,10 +6,10 @@ require File.expand_path('../config/application', __FILE__)
 
 Warranty::Application.load_tasks
 
-require 'rake'
-require 'rake/testtask'
-require 'rake/rdoctask'
+# require 'rake'
+# require 'rake/testtask'
+# require 'rake/rdoctask'
 
-require 'tasks/rails'
-require 'i18n-js'
-require 'i18n-js/rake'
+# require 'tasks/rails'
+# require 'i18n-js'
+# require 'i18n-js/rake'

@@ -3,6 +3,8 @@ class AllRegistrationsController < ApplicationController
   # GET /all_registrations.json
   def index
     @all_registrations = AllRegistration.all
+    @parent = find_parent
+    @image_tables = @parent.image_tables
 
     respond_to do |format|
       format.html # index.html.erb
@@ -48,9 +50,16 @@ class AllRegistrationsController < ApplicationController
   # POST /all_registrations.json
   def create
     @all_registration = AllRegistration.new(params[:all_registration])
+
+puts params["files"]["image_table"],"ddddddddddddd"
+
+    @parent = find_parent
+    @photo = @parent.image_tables.build(params["files"]["image_table"])
+
     # mv = MoveClass.findgroupyearsem(params[:group],params[:year], :semester=>params[:semester])
     respond_to do |format|
       if @all_registration.save
+
         @all_registration.move_class_children.create(params[:all_registration_children])
         # @all_registration.move_class_children.create(:group=>params[:group],:year=>params[:year], :semester=>params[:semester])
         # mv = MoveClass.create({:group=>params[:group], :year=>params[:year], :semester=>params[:semester]}) if mv.blank?
@@ -124,4 +133,15 @@ class AllRegistrationsController < ApplicationController
   #     end
   #   render :json => get_groups_years
   # end
+  private
+
+  def find_parent
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+    nil
+  end
+
 end
