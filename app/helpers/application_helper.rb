@@ -17,7 +17,7 @@ module ApplicationHelper
 		  when :calendra
 			Date.today.strftime("%d/%m/%Y")
 		  when :date_time
-		  	Time.now.strftime("%Y-%m-%d %I:%M:%S %p %Z")
+		  	Time.now.strftime("%Y-%m-%d %I:%M:%S %p")
 		  when :default
 			Date.today.strftime("%Y/%m/%d")
 		end

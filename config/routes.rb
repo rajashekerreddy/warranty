@@ -1,10 +1,12 @@
 Warranty::Application.routes.draw do
  
+  # map.resources :all_registrations, :has_many => :image_tables
+
   resources :college_fees
 
   resources :attendences do
   member do
-   get :get_attendence_percentage
+    get :get_attendence_percentage
     get :get_attendence_sheet
   end
   collection do
