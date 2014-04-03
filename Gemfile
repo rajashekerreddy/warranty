@@ -22,7 +22,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 group :development, :test do
-  gem 'mysql', '2.9.1'
+  gem 'mysql2'
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'minitest-spec-rails'
   gem 'minitest'
