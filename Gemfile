@@ -21,8 +21,8 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-  gem 'mysql2'
 group :development, :test do
+  gem 'mysql2'
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'minitest-spec-rails'
   gem 'minitest'
