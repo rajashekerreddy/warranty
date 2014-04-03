@@ -42,3 +42,10 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_college_fee_path,
             :class => 'btn btn-primary' %>
+<script type="text/javascript">
+  $(function() {
+    // Blog is the app name
+    window.router = new Warranty.Routers.PostsRouter({college_fees: <%= @college_fees.to_json.html_safe -%>});
+    Backbone.history.start();
+  });
+</script>

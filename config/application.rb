@@ -32,6 +32,7 @@ module Warranty
     
     config.generators do |g|
       g.assets false
+      g.fixture_replacement :fabrication, :dir => 'test/fabricators'
     end
     
 

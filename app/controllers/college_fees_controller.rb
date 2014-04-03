@@ -3,7 +3,7 @@ class CollegeFeesController < ApplicationController
   # GET /college_fees.json
   def index
     @college_fees = CollegeFee.all
-
+    @college = CollegeFee.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @college_fees }
