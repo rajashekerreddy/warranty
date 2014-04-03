@@ -6,8 +6,8 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-gem 'pg'
 group :production do
+  gem 'pg'
 end
 
 # Gems used only for assets and not required
@@ -21,7 +21,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-  gem 'mysql'
+  # gem 'mysql'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'minitest-spec-rails'
