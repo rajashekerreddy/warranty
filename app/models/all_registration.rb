@@ -12,5 +12,4 @@ class AllRegistration < ActiveRecord::Base
   def test_that_kitty_can_eat
     return "OHAI!"
   end
-
 end
