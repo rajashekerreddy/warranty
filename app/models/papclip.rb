@@ -2,6 +2,7 @@ require 'paperclip'
 class Papclip < ActiveRecord::Base
   attr_accessible :files
 puts "sai rammmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
+Resque.enqueue(Sleeper, 5)
   has_attached_file :files, :styles => { :small => "150x150>" },
                   :url  => "/assets/products/:id/:style/:basename.:extension",
                   :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"

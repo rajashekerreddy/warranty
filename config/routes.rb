@@ -1,6 +1,14 @@
+require 'resque/server'
 Warranty::Application.routes.draw do
  
   # map.resources :all_registrations, :has_many => :image_tables
+
+
+
+# Of course, you need to substitute your application name here, a block
+# like this probably already exists.
+
+  mount Resque::Server.new, at: "/resque"
 
   resources :college_fees
 
