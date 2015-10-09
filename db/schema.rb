@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(:version => 20140214105443) do
     t.string   "group"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "subject"
     t.date     "att_date"
+    t.string   "subject"
   end
 
   create_table "categories", :force => true do |t|
@@ -159,15 +159,6 @@ ActiveRecord::Schema.define(:version => 20140214105443) do
     t.integer  "semester"
   end
 
-  create_table "move_classes", :force => true do |t|
-    t.string   "year"
-    t.string   "group"
-    t.string   "semester"
-    t.string   "batch"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "numbers", :force => true do |t|
     t.string   "n_type"
     t.integer  "start_value"
@@ -177,11 +168,11 @@ ActiveRecord::Schema.define(:version => 20140214105443) do
 
   create_table "papclips", :force => true do |t|
     t.string   "files"
+    t.string   "files_file_name"
+    t.string   "files_content_type"
+    t.integer  "files_file_size"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-    t.string   "files_file_name"
-    t.string   "files_file_size"
-    t.string   "files_content_type"
   end
 
   create_table "pclips", :force => true do |t|

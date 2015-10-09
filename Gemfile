@@ -58,3 +58,5 @@ gem "prototype-rails", "~> 3.2.1"
 gem 'devise' , '1.4.9'
 gem 'jquery_datepicker', '0.4'
 gem "rails-backbone"
+gem 'mongo_mapper'
+gem 'bson_ext'
